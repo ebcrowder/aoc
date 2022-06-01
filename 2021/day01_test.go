@@ -1,25 +1,16 @@
 package main
 
 import (
-	"io/ioutil"
 	"strconv"
-	"strings"
 	"testing"
+
+	"github.com/ebcrowder/aoc/v2/lib/util"
 )
 
-var input = "inputs/day01.txt"
+func TestDay01PartA(t *testing.T) {
+	input := "inputs/day01.txt"
+	split, _ := util.ParseInputAsSlice(input)
 
-func parseInput() ([]string, error) {
-	bytes, err := ioutil.ReadFile(input)
-	if err != nil {
-		return nil, err
-	}
-	contents := string(bytes)
-	split := strings.Split(contents, "\n")
-	return split, nil
-}
-
-func partA(split []string) int {
 	increments := 0
 	last := -1
 	for _, s := range split {
@@ -30,10 +21,16 @@ func partA(split []string) int {
 		last = i
 
 	}
-	return increments
+	want := 1154
+	if increments != want {
+		t.Fatalf("got %q, want %#q", increments, want)
+	}
 }
 
-func partB(split []string) int {
+func TestDay01PartB(t *testing.T) {
+	input := "inputs/day01.txt"
+	split, _ := util.ParseInputAsSlice(input)
+
 	increments := 0
 	lastNums := []int{0, 0, 0}
 	lastSum := 0
@@ -51,25 +48,9 @@ func partB(split []string) int {
 		}
 		lastSum = sum
 	}
-	return increments
-}
-
-func TestPartA(t *testing.T) {
-	split, _ := parseInput()
-
-	want := 1154
-	partA := partA(split)
-	if want != partA {
-		t.Fatalf("got %q, want %#q", partA, want)
-	}
-}
-
-func TestPartB(t *testing.T) {
-	split, _ := parseInput()
 
 	want := 1127
-	partB := partB(split)
-	if want != partB {
-		t.Fatalf("got %q, want %#q", partB, want)
+	if increments != want {
+		t.Fatalf("got %q, want %#q", increments, want)
 	}
 }

@@ -1,27 +1,37 @@
-package template
+package main
 
 import (
-	"flag"
-	"fmt"
-	"io/ioutil"
-	"strings"
+	"testing"
+
+	"github.com/ebcrowder/aoc/v2/lib/util"
 )
 
-var inputFile = "inputs/day01.txt"
+func TestPartA(t *testing.T) {
+	input := ""
+	split, _ := util.ParseInputAsSlice(input)
 
-func main() {
-	flag.Parse()
-	bytes, err := ioutil.ReadFile(inputFile)
-	if err != nil {
-		return
-	}
-	contents := string(bytes)
-	split := strings.Split(contents, "\n")
+	print(split)
 
 	// TODO
-	fmt.Println(split)
 
-	// part A
+	got := 0
+	want := 0
+	if got != want {
+		t.Fatalf("got %q, want %#q", got, want)
+	}
+}
 
-	// part B
+func TestPartB(t *testing.T) {
+	input := ""
+	split, _ := util.ParseInputAsSlice(input)
+
+	print(split)
+
+	// TODO
+
+	got := 0
+	want := 0
+	if got != want {
+		t.Fatalf("got %q, want %#q", got, want)
+	}
 }

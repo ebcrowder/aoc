@@ -1,24 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
 	"strconv"
 	"strings"
+	"testing"
+
+	"github.com/ebcrowder/aoc/v2/lib/util"
 )
 
-var inputFile = "inputs/day02.txt"
-
-func main() {
-	bytes, err := ioutil.ReadFile(inputFile)
-	if err != nil {
-		return
-	}
-	contents := string(bytes)
-	split := strings.Split(contents, "\n")
+func TestDay02PartA(t *testing.T) {
+	input := "inputs/day02.txt"
+	split, _ := util.ParseInputAsSlice(input)
 	split = split[:len(split)-1] // trim blank element at end of list
 
-	// part A
 	horizontal := 0
 	depth := 0
 
@@ -37,11 +31,19 @@ func main() {
 
 	product := horizontal * depth
 
-	fmt.Println("Part A:", product)
+	want := 2039912
+	if product != want {
+		t.Fatalf("got %q, want %#q", product, want)
+	}
+}
 
-	// part B
-	horizontal = 0
-	depth = 0
+func TestDay02PartB(t *testing.T) {
+	input := "inputs/day02.txt"
+	split, _ := util.ParseInputAsSlice(input)
+	split = split[:len(split)-1] // trim blank element at end of list
+
+	horizontal := 0
+	depth := 0
 	aim := 0
 
 	for _, direction := range split {
@@ -58,7 +60,10 @@ func main() {
 		}
 	}
 
-	product = horizontal * depth
+	product := horizontal * depth
 
-	fmt.Println("Part B:", product)
+	want := 1942068080
+	if product != want {
+		t.Fatalf("got %q, want %#q", product, want)
+	}
 }
